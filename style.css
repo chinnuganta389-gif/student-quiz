@@ -1,0 +1,264 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
+body {
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #1d2671, #c33764, #0f2027, #2c5364);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gradient animation */
+@keyframes gradientBG {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   MAIN CONTAINER (GLASS)
+========================= */
+.container {
+  width: 90%;
+  max-width: 550px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+/* =========================
+   PAGE CONTROL
+========================= */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   HEADINGS
+========================= */
+h2, h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   INPUT FIELDS
+========================= */
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #00c6ff;
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 198, 255, 0.6);
+}
+
+/* Subject buttons spacing */
+#subjectPage button {
+  margin-bottom: 10px;
+}
+/* =========================
+   QUIZ OPTIONS - Radio Buttons at the End
+========================= */
+label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* radio button at the end */
+  padding: 12px;
+  margin: 8px 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+label:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Hide default radio button */
+label input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;   /* size of radio */
+  height: 20px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Checked state */
+label input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;  /* inner circle size */
+  height: 12px;
+  background: #00c6ff; /* selected color */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* =========================
+   RESULT STYLES
+========================= */
+.pass {
+  color: #00ff9c;
+  font-weight: bold;
+  text-align: center;
+}
+
+.fail {
+  color: #ff4c4c;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* =========================
+   REVIEW SECTION
+========================= */
+#review {
+  max-height: 220px;
+  overflow-y: auto;
+  margin-top: 15px;
+  padding-right: 5px;
+}
+
+#review::-webkit-scrollbar {
+  width: 6px;
+}
+
+#review::-webkit-scrollbar-thumb {
+  background: #00c6ff;
+  border-radius: 10px;
+}
+
+/* =========================
+   LOGIN ERROR
+========================= */
+#loginError {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+.container {
+  width: 80vw;          /* ⬅ BIGGER WIDTH (80% screen) */
+  height: 80vh;         /* ⬅ BIGGER HEIGHT */
+  max-width: none;      /* ⬅ REMOVE LIMIT */
+  max-height: none;
+  padding: 40px;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  color: #fff;
+
+  overflow-y: auto;     /* ⬅ scroll if content exceeds */
+}
+/* CENTER FULL LOGO IMAGE ABOVE LOGIN */
+.logo-center {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.logo-center img {
+  width: 260px;        /* show full image clearly */
+  max-width: 90%;
+  height: auto;        /* prevents image cutting */
+}
+.logo-center {
+  animation: fadeDown 0.8s ease;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.logo-center { text-align:center; margin-bottom:15px; }
+.logo-center img { width:240px; }
+
+#chatBox {
+  background:#fff;
+  color:#000;
+  height:200px;
+  overflow-y:auto;
+  padding:10px;
+  margin-top:10px;
+}
+
+.template {
+  text-align:center;
+  padding:40px;
+  color:#000;
+}
+
+.certificate {
+  border:6px solid #0072ff;
+  padding:50px;
+}
